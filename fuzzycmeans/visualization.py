@@ -3,7 +3,7 @@ from numpy.random import random
 from bokeh.plotting import figure, show, output_file
 from bokeh.palettes import Category20 as pallette
 import itertools
-from fuzzy_clustering import FCM
+from fuzzycmeans.fuzzy_clustering import FCM
 import logging
 
 
@@ -79,7 +79,7 @@ def draw_model_2d(model, data=None, membership=None, show_figure=True):
             for idx, data_point in enumerate(data):
                 # print idx
                 # print clus
-                print membership[idx][clus]
+                print(membership[idx][clus])
                 fig = draw_points_2d(np.array([data_point]), fig=fig, title=title, marker="circle", size=10,
                                      line_color="navy", fill_color=color, alpha=membership[idx][clus])
     if show_figure:

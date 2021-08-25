@@ -66,9 +66,9 @@ class FCM:
         But I added a check below to prevent such a thing from happening
         """
         self.u = np.zeros((num_of_points, self.n_clusters))
-        for i in xrange(num_of_points):
+        for i in range(num_of_points):
             row_sum = 0.0
-            for c in xrange(self.n_clusters):
+            for c in range(self.n_clusters):
                 if c == self.n_clusters-1:  # last iteration
                     self.u[i][c] = 1 - row_sum
                 else:
@@ -90,9 +90,9 @@ class FCM:
 
         """
         self.u = np.zeros((num_of_points, self.n_clusters))
-        for i in xrange(num_of_points):
+        for i in range(num_of_points):
             row_sum = 0.0
-            for c in xrange(self.n_clusters):
+            for c in range(self.n_clusters):
                 if c == self.n_clusters-1:  # last iteration
                     self.u[i][c] = 1.0 - row_sum
                 else:
@@ -115,10 +115,10 @@ class FCM:
         num_of_features = X.shape[1]
         centers = []
         if update_func is None:
-            for c in xrange(self.n_clusters):
+            for c in range(self.n_clusters):
                 sum1_vec = np.zeros(num_of_features)
                 sum2_vec = 0.0
-                for i in xrange(num_of_points):
+                for i in range(num_of_points):
                     interm1 = (self.u[i][c] ** self.m)
                     interm2 = interm1 * X[i]
                     sum1_vec += interm2
@@ -138,10 +138,10 @@ class FCM:
                     sum2_vec = 0.000001
                 centers.append(sum1_vec/sum2_vec)
         else:
-            for c in xrange(self.n_clusters):
+            for c in range(self.n_clusters):
                 sum1_vec = np.zeros(num_of_features)
                 sum2_vec = 0.0
-                for i in xrange(num_of_points):
+                for i in range(num_of_points):
                     interm1 = (self.u[i][c] ** self.m)
                     interm2 = interm1 * X[i]
                     sum1_vec += interm2
@@ -174,7 +174,7 @@ class FCM:
         :return: the distance
         """
         sum_of_sq = 0.0
-        for i in xrange(len(x)):
+        for i in range(len(x)):
             sum_of_sq += (x[i]-c[i]) ** 2
         return sum_of_sq
 
@@ -220,8 +220,8 @@ class FCM:
 
         For performance, the distance can be computed once, before the loop instead of computing it every time
         """
-        for i in xrange(X.shape[0]):
-            for c in xrange(len(self.cluster_centers_)):
+        for i in range(X.shape[0]):
+            for c in range(len(self.cluster_centers_)):
                 self.u[i][c] = self.compute_membership_single(X, i, c)
 
     def fit(self, X, y=None, hard=True):
@@ -248,7 +248,7 @@ class FCM:
         list_of_centers = []
         membership_history = []
         membership_history.append(self.u.copy())
-        for i in xrange(self.max_iter):
+        for i in range(self.max_iter):
             if do_compute_cluster_centers:
                 centers = self.compute_cluster_centers(X)
                 if i == 0:

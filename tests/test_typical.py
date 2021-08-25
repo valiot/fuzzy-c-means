@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from fuzzycmeans import FCM
+from fuzzycmeans.fuzzy_clustering import FCM
 
 
 def test_2d():

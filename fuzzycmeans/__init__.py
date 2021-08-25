@@ -1,2 +1,2 @@
-name = "fuzzycmeans"
-from fuzzy_clustering import FCM
+# name = "fuzzycmeans"
+from fuzzycmeans.fuzzy_clustering import FCM
